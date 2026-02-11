@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card">
+        <button class="theme-toggle" id="theme-btn" title="Toggle Theme">💡</button>
+
+        <div class="search">
+            <input type="text" id="city-input" placeholder="Enter city...">
+            <button id="search-btn">🔍</button>
+            <button id="loc-btn">📍</button>
+            <button id="stats-btn" onclick="goToAnalytics()">📊</button>
+        </div>
+
+        <div class="weather">
+            <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="weather-icon" id="icon">
+            <h1 class="temp" id="temp">--°C</h1>
+            <h2 class="city" id="city-name">--</h2>
+            
+            <div class="details">
+                <div class="col">
+                    <p>Humidity</p>
+                    <p class="humidity" id="humidity">--%</p>
+                </div>
+                <div class="col">
+                    <p>Wind</p>
+                    <p class="wind" id="wind">-- km/h</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function goToAnalytics() {
+            const city = document.getElementById('city-name').innerText;
+            window.location.href = `analytics.html?city=${city}`;
+        }
+    </script>
+</body>
+</html>

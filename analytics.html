@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="card">
+        <button class="theme-toggle" id="theme-btn">💡</button>
+        <button class="icon-btn" onclick="history.back()" style="position:absolute; top:20px; left:20px;">❮ Back</button>
+        
+        <div style="margin-top: 40px; text-align: center;">
+            <h2 id="city-display" class="city">Analytics</h2>
+        </div>
+
+        <div class="tabs">
+            <button class="tab" id="tab-prev" onclick="setMode('prev')">--</button>
+            <button class="tab active" id="tab-curr" onclick="setMode('curr')">--</button>
+            <button class="tab" id="tab-next" onclick="setMode('next')">--</button>
+        </div>
+
+        <h1 class="temp" id="avg-temp">--°C</h1>
+        <p id="avg-label" style="text-align: center; color: var(--text-secondary);">Average Temp</p>
+
+        <div class="date-controls" id="date-inputs">
+            <div class="date-row">
+                <label>From</label>
+                <input type="date" id="date-from">
+            </div>
+            <div class="date-row">
+                <label>To</label>
+                <input type="date" id="date-to">
+            </div>
+        </div>
+
+        <canvas id="climateChart"></canvas>
+    </div>
+
+    <script src="analytics.js"></script>
+    <script>
+        // Shared Theme Logic
+        const toggleBtn = document.getElementById('theme-btn');
+        if(localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+        toggleBtn.addEventListener('click', () => {
+            if (document.documentElement.getAttribute('data-theme') === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
